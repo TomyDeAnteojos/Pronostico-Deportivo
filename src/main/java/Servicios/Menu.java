@@ -8,7 +8,8 @@ public class Menu
     {
         Scanner sc = new Scanner(System.in);
         int op= 0;
-        System.out.println("\tMENU INICIAL\n" +
+        System.out.print(
+                "\tMENU INICIAL\n" +
                 "-----------------------\n" +
                 "1. Ingresar Equipos\n" +
                 "2. Empezar\n" +
