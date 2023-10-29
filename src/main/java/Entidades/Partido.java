@@ -21,7 +21,25 @@ public class Partido {
 
 	public ResultadoEnum resultado(Equipo unEquipo) {
 		
-		return ResultadoEnum.Empate; // ROMY: Pongo que retorne cualquiera, después lo calculamos.
+		if (unEquipo.equals(this.equipo1)) {
+			if (this.getGolesEquipo1() == this.getGolesEquipo2())
+				return ResultadoEnum.Empate;
+			else if (this.getGolesEquipo1() > this.getGolesEquipo2())
+				return ResultadoEnum.Ganador;
+			else 
+				return ResultadoEnum.Perdedor;
+		}
+		else if (unEquipo.equals(this.equipo2)) {
+			if (this.getGolesEquipo1() == this.getGolesEquipo2())
+				return ResultadoEnum.Empate;
+			else if (this.getGolesEquipo1() > this.getGolesEquipo2())
+				return ResultadoEnum.Perdedor;
+			else 
+				return ResultadoEnum.Ganador;
+		}
+		
+	
+		return null; // ROMY: Pongo que retorne cualquiera, después lo calculamos.
 		
 	} //RESULTADO ENUM
 }
