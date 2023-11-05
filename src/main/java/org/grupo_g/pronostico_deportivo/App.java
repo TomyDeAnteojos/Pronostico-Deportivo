@@ -68,6 +68,8 @@ public class App
                 System.out.println("fin test");
             }
 
+            // Crea un objeto de tipo Equipo y lo asigna a equipos[i]
+            equipos[i] = new Equipo();
             equipos[i].setNombre(nombre);
             equipos[i].setDescripcion(descripcion);
         }
