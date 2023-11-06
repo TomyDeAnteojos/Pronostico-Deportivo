@@ -15,7 +15,7 @@ public class App
             switch (Servicios.Menu.menuOpciones())
             {
                 case 1:
-                    //cargarEquipos();
+//                    cargarEquipos();
                     break;
                 case 2:
                     // Empezar
