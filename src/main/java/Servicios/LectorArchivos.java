@@ -1,7 +1,6 @@
 package Servicios;
 
 import Entidades.Pronostico;
-import Entidades.ArchivoPronostico;
 import Entidades.ArchivoResultado;
 import com.opencsv.bean.CsvToBeanBuilder;
 
@@ -28,8 +27,8 @@ public class LectorArchivos {
         }
         return listaDeResultados;
     }
-    public List<ArchivoPronostico> parsearPronosticos(String rutaDelArchivoPronosticos) {
-        List<ArchivoPronostico> listaDePronosticos = null;
+    public List<Pronostico> parsearPronosticos(String rutaDelArchivoPronosticos) {
+        List<Pronostico> listaDePronosticos = null;
         try {
             listaDePronosticos =
                     // Config. del Archivo
