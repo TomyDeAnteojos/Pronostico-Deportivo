@@ -4,29 +4,29 @@ import com.opencsv.bean.CsvBindByPosition;
 
 public class ArchivoResultado {
 	
-//	@CsvBindByPosition(position = 0)
-//	private Integer ronda;
+	@CsvBindByPosition(position = 0)
+	private Integer ronda;
 
 	@CsvBindByPosition(position = 1)
 	private String equipo1;
-
+	
 	@CsvBindByPosition(position = 2)
 	private Integer cantGoles1;
-
+	
 	@CsvBindByPosition(position = 3)
 	private Integer cantGoles2;
-
+	
 	@CsvBindByPosition(position = 4)
 	private String equipo2;
 
-//	public Integer getRonda() {
-//		return ronda;
-//	}
-//
-//	public void setRonda(Integer ronda) {
-//		this.ronda = ronda;
-//	}
+	public Integer getRonda() {
+		return ronda;
+	}
 
+	public void setRonda(Integer ronda) {
+		this.ronda = ronda;
+	}
+	
 	public String getEquipo1() {
 		return equipo1;
 	}
@@ -59,16 +59,16 @@ public class ArchivoResultado {
 		this.equipo2 = equipo2;
 	}
 
-/*
-	public ResultadoEnum ganoEmpatoOPerdioElEquipo1() {
 
+	public ResultadoEnum ganoEmpatoOPerdioElEquipo1() {
+		
 		if(this.cantGoles1> this.cantGoles2)
 			return ResultadoEnum.Ganador;
-
+		
 		if(this.cantGoles1< this.cantGoles2)
 			return ResultadoEnum.Perdedor;
-
+		
 		return ResultadoEnum.Empate;
 	}
-	*/
+	
 }

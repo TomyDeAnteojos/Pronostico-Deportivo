@@ -7,21 +7,30 @@ public class Pronostico {
 //	private Partido partido;
 //	private Equipo equipo;
 //	private ResultadoEnum resultado;
-	
+
 	@CsvBindByPosition(position = 0)
-	private String equipo1;
+	private String participante;
 
 	@CsvBindByPosition(position = 1)
-	private String gana1;
-	
+	private String equipo1;
+
 	@CsvBindByPosition(position = 2)
-	private String empata;
-	
+	private String gana1;
 	@CsvBindByPosition(position = 3)
+	private String empata;
+	@CsvBindByPosition(position = 4)
 	private String gana2;
 
-	@CsvBindByPosition(position = 4)
+	@CsvBindByPosition(position = 5)
 	private String equipo2;
+
+	public String getParticipante() {
+		return participante;
+	}
+
+	public void setParticipante(String participante) {
+		this.participante = participante;
+	}
 
 	public String getEquipo1() {
 		return equipo1;
@@ -62,10 +71,16 @@ public class Pronostico {
 	public void setEquipo2(String equipo2) {
 		this.equipo2 = equipo2;
 	}
-	
-	public int puntos() {
-		return 0; // ROMY: CALCULAR PUNTOS Y RETORNAR
+
+	public ResultadoEnum ganoEmpatoOPerdioElEquipo1() {
+
+		if (this.gana1.equals("X"))
+			return ResultadoEnum.Ganador;
+
+		if (this.gana2.equals("X"))
+			return ResultadoEnum.Perdedor;
+
+		return ResultadoEnum.Empate;
 	}
-	
-	
+
 }
