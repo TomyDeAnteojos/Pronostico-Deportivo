@@ -36,19 +36,28 @@ public class App {
 		// SUMARA LOS PUNTOS Y LOS GUARDARA CON SU RESPECTIVO PARTICIPANTE
 		Map<String, Integer> puntosParticipantes = new HashMap<String, Integer>();
 
-		// HASHMAP -> STRING
-		listaPronosticos.toString();
+		obtenerPuntaje(listaPronosticos, listaResultado,puntosParticipantes);
 
-		// RECORRE LOS PRONOSTICOS
+		mostrarPuntajeTotal(puntosParticipantes);
+	}
+
+	public static void mostrarPuntajeTotal(Map<String, Integer> aux) {
+		System.out.println("PUNTAJE TOTAL");
+		System.out.println("-------------------------");
+		for (Map.Entry<String, Integer> participante : aux.entrySet()) {
+			String nombre = participante.getKey();
+			int puntuacion = participante.getValue();
+			System.out.println(nombre + " - " + puntuacion);
+		}
+	}
+
+	public static void obtenerPuntaje(
+			List<Pronostico> listaPronosticos,			// ARCHIVO PONOSTICO
+			List<ArchivoResultado> listaResultado,		// ARCHIVO RESULTADO
+			Map<String, Integer> puntosParticipantes)	// PUNTOS PARTICIPANTES
+	{
 		for (Pronostico pronostico : listaPronosticos)
 		{
-			/* SE PUEDE BORRAR YA QUE NO CUMPLE NINGUNA FUNCION IMPORTANTE
-			//ver si se muentran los equipos 🆗
-			System.out.println(pronostico.getEquipo1() + " VS. " + pronostico.getEquipo2());
-			System.out.println("PARTICIPANTE - PUNTUACION");
-			System.out.println("----------------------------------------");
-			*/
-			
 			// COMPRUEBO QUE EL PARTICIPANTE NO ESTE EN LA LISTA
 			if (!puntosParticipantes.containsKey(pronostico.getParticipante()))
 			{
@@ -73,18 +82,9 @@ public class App {
 				}
 			}
 		}
-		mostrarPuntajeTotal(puntosParticipantes);
 	}
 
-	public static void mostrarPuntajeTotal(Map<String, Integer> aux) {
-		System.out.println("PUNTAJE TOTAL");
-		System.out.println("-------------------------");
-		for (Map.Entry<String, Integer> participante : aux.entrySet()) {
-			String nombre = participante.getKey();
-			int puntuacion = participante.getValue();
-			System.out.println(nombre + " - " + puntuacion);
-		}
-	}
+
 
 }
 
