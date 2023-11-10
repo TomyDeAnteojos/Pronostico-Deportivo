@@ -17,26 +17,12 @@ public class App {
 
 	public static void main(String[] args)
 	{
-		/*
-		 * while(true) { switch (Servicios.Menu.menuOpciones()) { case 1: //
-		 * cargarEquipos(); break; case 2: // Empezar // Ingresar apuestas // ingresar
-		 * goles // calcular puntaje break; case 0: System.exit(0); break; default:
-		 * break; } }
-		 */
-		LectorArchivos lectorArchivos = new LectorArchivos();
-
-		// Leo el archivo de RESULTADO y lo asigno a una variable
-		List<ArchivoResultado> listaResultado =
-				lectorArchivos.parsearResultados("src/main/resources/resultados.csv");
-
-		// Leo el archivo de PRONOSTICO y lo asigno a una variable
-		List<Pronostico> listaPronosticos =
-				lectorArchivos.parsearPronosticos("src/main/resources/pronostico.csv");
+		String rutaPronostico = "src/main/resources/pronostico.csv";
+		String rutaResultados = "src/main/resources/resultados.csv";
 
 		// SUMARA LOS PUNTOS Y LOS GUARDARA CON SU RESPECTIVO PARTICIPANTE
-		Map<String, Integer> puntosParticipantes = new HashMap<String, Integer>();
-
-		obtenerPuntaje(listaPronosticos, listaResultado,puntosParticipantes);
+		Map<String, Integer> puntosParticipantes =
+				obtenerPuntaje( rutaPronostico,rutaResultados);
 
 		mostrarPuntajeTotal(puntosParticipantes);
 	}
@@ -51,11 +37,22 @@ public class App {
 		}
 	}
 
-	public static void obtenerPuntaje(
-			List<Pronostico> listaPronosticos,			// ARCHIVO PONOSTICO
-			List<ArchivoResultado> listaResultado,		// ARCHIVO RESULTADO
-			Map<String, Integer> puntosParticipantes)	// PUNTOS PARTICIPANTES
+	public static Map<String, Integer> obtenerPuntaje(
+			String rutaPronosticos,
+			String rutaResultado)
 	{
+		LectorArchivos lectorArchivos = new LectorArchivos();
+
+		// Leo el archivo de RESULTADO y lo asigno a una variable
+		List<ArchivoResultado> listaResultado =
+				lectorArchivos.parsearResultados(rutaResultado);
+
+		// Leo el archivo de PRONOSTICO y lo asigno a una variable
+		List<Pronostico> listaPronosticos =
+				lectorArchivos.parsearPronosticos(rutaPronosticos);
+
+		Map<String, Integer> puntosParticipantes = new HashMap<String, Integer>();
+
 		for (Pronostico pronostico : listaPronosticos)
 		{
 			// COMPRUEBO QUE EL PARTICIPANTE NO ESTE EN LA LISTA
@@ -82,6 +79,7 @@ public class App {
 				}
 			}
 		}
+		return puntosParticipantes;
 	}
 
 
