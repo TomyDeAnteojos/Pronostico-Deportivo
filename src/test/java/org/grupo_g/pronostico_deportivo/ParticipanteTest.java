@@ -54,8 +54,16 @@ public class ParticipanteTest
         Map<String, Integer> puntosParticipantes =
                 App.obtenerPuntaje( rutaPronostico,rutaResultados);
         
+        // con ayudin
+        int[] valores = new int[puntosParticipantes.size()];
+        int index = 0;
+        for (Integer valor : puntosParticipantes.values()) {
+            valores[index++] = valor;
+        }
+        
+        assertArrayEquals(new int[] {}, valores);
         //assertEquals(puntosParticipantes, null); // Primero va lo esperado y luego lo real
-        assertNull(puntosParticipantes); // Ver cual se puede usar porque no devuelve null, devuelve {} (no encuentro cual puede ser)
+       // assertNull(puntosParticipantes); // Ver cual se puede usar porque no devuelve null, devuelve {} (no encuentro cual puede ser)
     }
 
     //3- uno o los dos equipos que el participante eligió no existe
