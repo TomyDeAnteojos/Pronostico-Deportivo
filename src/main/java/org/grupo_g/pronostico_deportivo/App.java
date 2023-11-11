@@ -53,6 +53,7 @@ public class App {
 
 		Map<String, Integer> puntosParticipantes = new HashMap<String, Integer>();
 
+		
 		for (Pronostico pronostico : listaPronosticos)
 		{
 			// COMPRUEBO QUE EL PARTICIPANTE NO ESTE EN LA LISTA

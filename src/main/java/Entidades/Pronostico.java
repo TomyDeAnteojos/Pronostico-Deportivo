@@ -4,10 +4,6 @@ import com.opencsv.bean.CsvBindByPosition;
 
 public class Pronostico {
 
-//	private Partido partido;
-//	private Equipo equipo;
-//	private ResultadoEnum resultado;
-
 	@CsvBindByPosition(position = 0)
 	private String participante;
 

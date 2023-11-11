@@ -1,15 +1,12 @@
 package org.grupo_g.pronostico_deportivo;
 
-import Entidades.ArchivoResultado;
-import Entidades.Pronostico;
-import Servicios.LectorArchivos;
-import org.grupo_g.pronostico_deportivo.App;
-import org.junit.jupiter.api.Test;
+//import org.junit.jupiter.api.Test;
 
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import org.junit.Test;
 
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ParticipanteTest
@@ -28,13 +25,21 @@ public class ParticipanteTest
         int puntuacion = -1; //lo inicializo en un valor incorrecto
         for (Map.Entry<String, Integer> participante : puntosParticipantes.entrySet())
         {
-            String nombre = participante.getKey();
-            if(nombre == "Juan")
-            {
-                puntuacion = participante.getValue();
-            }
+            //String nombre = participante.getKey().toString(); // No importa el nombre, y asi no hardcodeamos :)
+            
+           	puntuacion = participante.getValue();
+            
+           	// Si encuentra un participante con puntaje 0, sale del for.
+            if (puntuacion == 0)
+            	break;
+           
+            // Esto no debería estar, deberíamos calcular que haya algún participante con puntuación 0, sin poner nombre..
+//            if(nombre.equalsIgnoreCase("Juan"))
+//            {
+//                puntuacion = participante.getValue();
+//            }
         }
-        assertEquals(puntuacion, 0);
+        assertEquals(0, puntuacion);
 
     }
 
@@ -48,14 +53,16 @@ public class ParticipanteTest
         // SUMARA LOS PUNTOS Y LOS GUARDARA CON SU RESPECTIVO PARTICIPANTE
         Map<String, Integer> puntosParticipantes =
                 App.obtenerPuntaje( rutaPronostico,rutaResultados);
-
-        assertEquals(puntosParticipantes, null);
+        
+        //assertEquals(puntosParticipantes, null); // Primero va lo esperado y luego lo real
+        assertNull(puntosParticipantes); // Ver cual se puede usar porque no devuelve null, devuelve {} (no encuentro cual puede ser)
     }
 
     //3- uno o los dos equipos que el participante eligió no existe
     @Test
     public void partidoInexistente()
     {
+    	// Tengo que pensar como podemos armar este jaja
         assertEquals(null, null);
     }
 }
