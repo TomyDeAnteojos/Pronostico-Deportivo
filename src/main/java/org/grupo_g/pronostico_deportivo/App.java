@@ -2,8 +2,10 @@ package org.grupo_g.pronostico_deportivo;
 
 import Entidades.*;
 import Servicios.*;
+import pronosticoDeportivoPersistencia.EquipoDAO;
 
 import java.sql.SQLOutput;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -15,7 +17,7 @@ import java.util.Scanner;
 
 public class App {
 
-	public static void main(String[] args)
+	public static void main(String[] args) throws Exception
 	{
 		String rutaPronostico = "src/main/resources/pronostico.csv";
 		String rutaResultados = "src/main/resources/resultados.csv";
@@ -25,8 +27,24 @@ public class App {
 				obtenerPuntaje( rutaPronostico,rutaResultados);
 
 		mostrarPuntajeTotal(puntosParticipantes);
-	}
+		
+		EquipoDAO equipoDAO = new EquipoDAO();
+		// Llamar al método traerResultados() para obtener el ArrayList de Partido
+		ArrayList<Partido> listaPartidos = equipoDAO.traerResultados();
+		// Usar un bucle foreach para recorrer el ArrayList de Partido y mostrar por consola los atributos de cada objeto Partido
+		
+		System.out.println("Mostrado los resultado de la DB");
+		System.out.println("----------");
+		for (Partido p : listaPartidos) {
+		    System.out.println("El nombre del primer equipo del partido es: " + p.getEquipo1().getNombre());
+		    System.out.println("El nombre del segundo equipo del partido es: " + p.getEquipo2().getNombre());
+		    System.out.println("Los goles del primer equipo son: " + p.getGolesEquipo1());
+		    System.out.println("Los goles del segundo equipo son: " + p.getGolesEquipo2());
+		    System.out.println();
+		}
 
+	}
+	
 	public static void mostrarPuntajeTotal(Map<String, Integer> aux) {
 		System.out.println("PUNTAJE TOTAL");
 		System.out.println("-------------------------");
@@ -81,7 +99,12 @@ public class App {
 			}
 		}
 		return puntosParticipantes;
-	}
+	} 
+	
+	
+	
+	
+	
 
 
 
