@@ -13,7 +13,7 @@ public abstract class DAO {
 	protected Statement sentencia = null;
 	
 	private final String USER = "root";
-	private final String PASSWORD = "Exe230994";
+	private final String PASSWORD = "Contraseña01"; //"Exe230994";
 	private final String DATABASE = "pronostico";
 	private final String DRIVER = "com.mysql.jdbc.Driver";
 	
