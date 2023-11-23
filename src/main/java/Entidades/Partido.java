@@ -1,5 +1,7 @@
 package Entidades;
 
+import java.util.List;
+
 public class Partido {
 
 	private Equipo equipo1;
@@ -42,4 +44,18 @@ public class Partido {
 		return null; // ROMY: Pongo que retorne cualquiera, después lo calculamos.
 		
 	} //RESULTADO ENUM
+	
+	public ResultadoEnum ganoEmpatoOPerdioElEquipo1(List<Partido> goles){
+		   
+		   for (Partido partido : goles) {
+			
+			if(partido.getGolesEquipo1()> partido.getGolesEquipo2())
+				return ResultadoEnum.Ganador;
+			
+			if(partido.getGolesEquipo1()< partido.getGolesEquipo2())
+				return ResultadoEnum.Perdedor;
+		}
+		   
+		   return ResultadoEnum.Empate;
+	    }
 }
