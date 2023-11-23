@@ -1,9 +1,14 @@
 package org.grupo_g.pronostico_deportivo;
 
+import java.util.ArrayList;
+
 //import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 import org.junit.Test;
+
+import Entidades.Partido;
+import pronosticoDeportivoPersistencia.EquipoDAO;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertNull;
@@ -13,14 +18,17 @@ public class ParticipanteTest
 {
     //1- test donde el participante no haya ganando nada y su puntuación sea 0
     @Test
-    public void participante_con_puntuacion_0()
+    public void participante_con_puntuacion_0() throws Exception
     {
         String rutaPronostico = "src/main/resources/pronostico.csv";
         String rutaResultados = "src/main/resources/resultados.csv";
+        
+        EquipoDAO equipoDAO = new EquipoDAO();
+		ArrayList<Partido> listaPartidos = equipoDAO.traerResultados();
 
         // SUMARA LOS PUNTOS Y LOS GUARDARA CON SU RESPECTIVO PARTICIPANTE
         Map<String, Integer> puntosParticipantes =
-                App.obtenerPuntaje( rutaPronostico,rutaResultados);
+                App.obtenerPuntaje( rutaPronostico,listaPartidos);
 
         int puntuacion = -1; //lo inicializo en un valor incorrecto
         for (Map.Entry<String, Integer> participante : puntosParticipantes.entrySet())
@@ -45,14 +53,17 @@ public class ParticipanteTest
 
     //2- no hay ningún partido registrado
     @Test
-    public void ningun_partido_registrado()
+    public void ningun_partido_registrado() throws Exception
     {
         String rutaPronostico = "src/main/resources/test_pronostico.csv";
         String rutaResultados = "src/main/resources/test_resultados.csv";
+        
+        EquipoDAO equipoDAO = new EquipoDAO();
+		ArrayList<Partido> listaPartidos = equipoDAO.traerResultados();
 
         // SUMARA LOS PUNTOS Y LOS GUARDARA CON SU RESPECTIVO PARTICIPANTE
         Map<String, Integer> puntosParticipantes =
-                App.obtenerPuntaje( rutaPronostico,rutaResultados);
+                App.obtenerPuntaje( rutaPronostico,listaPartidos);
         
         // con ayudin
         int[] valores = new int[puntosParticipantes.size()];

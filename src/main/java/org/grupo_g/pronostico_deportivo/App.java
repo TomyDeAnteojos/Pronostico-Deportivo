@@ -62,6 +62,7 @@ public class App {
 		List<Partido> resultados = new ArrayList<>(listaPartidos);
 		
 		for (Pronostico pronostico : listaPronosticos) {
+			
 			if (!puntosParticipantes.containsKey(pronostico.getParticipante())) {
 				puntosParticipantes.put(pronostico.getParticipante(), 0);
 			}
@@ -70,6 +71,7 @@ public class App {
 				if (partido.getEquipo1().getNombre().equalsIgnoreCase(pronostico.getEquipo1()) 
 						&& partido.getEquipo2().getNombre().equalsIgnoreCase(pronostico.getEquipo2())) 
 				{
+					
 					if (partido.ganoEmpatoOPerdioElEquipo1(listaPartidos) == pronostico.ganoEmpatoOPerdioElEquipo1()) {
 
 						puntosParticipantes.put(pronostico.getParticipante(),
