@@ -1,5 +1,7 @@
 package Entidades;
 
+import java.util.List;
+
 public class Partido {
 
 	private Equipo equipo1;
@@ -19,27 +21,28 @@ public class Partido {
     public void setGolesEquipo1(int golesEquipo1) { this.golesEquipo1 = golesEquipo1; }
     public void setGolesEquipo2(int golesEquipo2) { this.golesEquipo2 = golesEquipo2; }	
 
-	public ResultadoEnum resultado(Equipo unEquipo) {
-		
-		if (unEquipo.equals(this.equipo1)) {
-			if (this.getGolesEquipo1() == this.getGolesEquipo2())
-				return ResultadoEnum.Empate;
-			else if (this.getGolesEquipo1() > this.getGolesEquipo2())
-				return ResultadoEnum.Ganador;
-			else 
-				return ResultadoEnum.Perdedor;
+	public ResultadoEnum ganoEmpatoOPerdioElEquipo1(List<Partido> goles){
+		   
+		for (Partido partido : goles) {
+			
+			if (partido.getEquipo1().equals(this.equipo1)) {
+				if (this.getGolesEquipo1() == this.getGolesEquipo2())
+					return ResultadoEnum.Empate;
+				else if (this.getGolesEquipo1() > this.getGolesEquipo2())
+					return ResultadoEnum.Ganador;
+				else 
+					return ResultadoEnum.Perdedor;
+			}
+			else if (partido.getEquipo2().equals(this.equipo2)) {
+				if (this.getGolesEquipo1() == this.getGolesEquipo2())
+					return ResultadoEnum.Empate;
+				else if (this.getGolesEquipo1() > this.getGolesEquipo2())
+					return ResultadoEnum.Perdedor;
+				else 
+					return ResultadoEnum.Ganador;
+			}
+						
 		}
-		else if (unEquipo.equals(this.equipo2)) {
-			if (this.getGolesEquipo1() == this.getGolesEquipo2())
-				return ResultadoEnum.Empate;
-			else if (this.getGolesEquipo1() > this.getGolesEquipo2())
-				return ResultadoEnum.Perdedor;
-			else 
-				return ResultadoEnum.Ganador;
-		}
-		
-	
-		return null; // ROMY: Pongo que retorne cualquiera, después lo calculamos.
-		
-	} //RESULTADO ENUM
+		return ResultadoEnum.Empate;
+	}
 }
