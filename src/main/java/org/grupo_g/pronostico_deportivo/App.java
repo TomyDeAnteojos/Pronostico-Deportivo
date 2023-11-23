@@ -26,7 +26,7 @@ public class App {
 		LectorArchivos lectorArchivos = new LectorArchivos();
 		List<Pronostico> listaPronosticos = lectorArchivos.parsearPronosticos(rutaPronostico);
 		
-		/* para ver si los resultados de la db estan bien
+		 //para ver si los resultados de la db estan bien
 		for (Partido partido : listaPartidos) {
 			System.out.println("Equipo 1");
 			System.out.println(partido.getEquipo1().getNombre());
@@ -35,7 +35,7 @@ public class App {
 			System.out.println(partido.getEquipo2().getNombre());
 			System.out.println(partido.getGolesEquipo2());
 			System.out.println("");
-		} */
+		} 
 	}
 	
 	public static void mostrarPuntajeTotal(Map<String, Integer> aux) {
