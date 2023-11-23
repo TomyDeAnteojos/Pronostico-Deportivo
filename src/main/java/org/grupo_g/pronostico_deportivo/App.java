@@ -19,8 +19,7 @@ public class App {
 
 		Map<String, Integer> puntosParticipantes = obtenerPuntaje(rutaPronostico, listaPartidos);
 
-		mostrarPuntajeTotal(puntosParticipantes);
-		System.out.println("");
+		
 
 		// Leo el archivo de PRONOSTICO y lo asigno a una variable
 		LectorArchivos lectorArchivos = new LectorArchivos();
@@ -36,10 +35,13 @@ public class App {
 			System.out.println("");
 			
 		} 
+		
+		mostrarPuntajeTotal(puntosParticipantes);
+		System.out.println("");
 	}
 	
 	public static void mostrarPuntajeTotal(Map<String, Integer> aux) {
-		System.out.println("PUNTAJE TOTAL");
+		System.out.println("PUNTAJE TOTAL DE LOS PARTICIPANTES");
 		System.out.println("-------------------------");
 		for (Map.Entry<String, Integer> participante : aux.entrySet()) {
 			String nombre = participante.getKey();
