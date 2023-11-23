@@ -27,14 +27,14 @@ public class App {
 		List<Pronostico> listaPronosticos = lectorArchivos.parsearPronosticos(rutaPronostico);
 		
 		 //para ver si los resultados de la db estan bien
+		
 		for (Partido partido : listaPartidos) {
-			System.out.println("Equipo 1");
-			System.out.println(partido.getEquipo1().getNombre());
-			System.out.println(partido.getGolesEquipo1());
-			System.out.println("Equipo 2");
-			System.out.println(partido.getEquipo2().getNombre());
-			System.out.println(partido.getGolesEquipo2());
+			
+			System.out.println("Resultado de los partidos del Mundial");
+			System.out.println(partido.getEquipo1().getNombre() + " " + partido.getGolesEquipo1() + " "
+					+partido.getEquipo2().getNombre() + " " + partido.getGolesEquipo2() );
 			System.out.println("");
+			
 		} 
 	}
 	
